@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import {setLevelCookie } from '@/base_functions'
+
 export default {
   data() {
     return {
@@ -40,7 +42,12 @@ export default {
 
   // Mettez à jour l'indice de la tuile vide pour qu'elle soit en haut à gauche
   this.emptyTile = 1;
-  alert('Congratulations (no)! You solved the puzzle (or not)');
+  
+  this.waitBeforeRedirect().then(() => {
+            setLevelCookie(2);
+            window.location = '/escape-game/2';
+          });
+  // win
 },
 
     initTiles() {
@@ -63,7 +70,12 @@ export default {
         [this.tiles[index], this.tiles[this.emptyTile]] = [this.tiles[this.emptyTile], this.tiles[index]];
         this.emptyTile = index;
         if (this.isSolved()) {
-          alert('Congratulations! You solved the puzzle!');
+          
+          // win
+          this.waitBeforeRedirect().then(() => {
+            setLevelCookie(2);
+            window.location = '/escape-game/2';
+          });
         }
       }
     },
@@ -120,7 +132,11 @@ export default {
   }
 
   return true;
-}
+},
+
+  async waitBeforeRedirect() {
+    return new Promise(resolve => setTimeout(resolve, 2000));
+  }
 
   }
 }
