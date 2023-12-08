@@ -8,12 +8,20 @@
 <script>
 import VictoryArticles from '@/components/VictoryArticles.vue';
 import VictoryBackToGame from '@/components/VictoryBackToGame.vue';
+import { getLevelCookie } from '@/base_functions';
 
 export default {
     name: 'VictoryView',
     components: {
         VictoryArticles,
         VictoryBackToGame
+    },
+    beforeMount() {
+      if (getLevelCookie() < 10 && getLevelCookie() > 0) {
+        window.location = '/escape-game/' + getLevelCookie();
+      } else if (getLevelCookie() < 10) {
+        window.location = '/';
+      }
     }
 }
 </script>
