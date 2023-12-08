@@ -32,44 +32,19 @@ export default {
   mounted() {
     this.articles = [
       {
-        name: "TEST1",
-        description: "TEST 1 description",
-        link: "#"
+        name: "Réchauffement climatique : un danger ...",
+        description: "D’après l’ONU, vers 2050, les réfugiés climatiques pourraient être au nombre de 250 millions. Déjà, entre 2008 et 2016, la moyenne annuelle des déplacements liés au changement climatique a été de 25,3 millions de personnes dans le monde...",
+        link: "https://reseauactionclimat.org/rechauffement-climatique-danger-humanitaire/"
       },
       {
-        name: "TEST2",
-        description: "TEST 2 description",
-        link: "#"
+        name: "Climat et santé, des enjeux liés",
+        description: "Le changement climatique a des impacts sur la santé, renforçant les risques liés à la chaleur, aux catastrophes naturelles, aux maladies… Mais de nombreuses mesures pour réduire nos émissions de gaz à effet de serre ont des bénéfices ...",
+        link: "https://reseauactionclimat.org/climat-et-sante-des-enjeux-lies/"
       },
       {
-        name: "TEST3",
-        description: "TEST 3 description",
-        link: "#"
-      },
-      {
-        name: "TEST4",
-        description: "TEST 4 description",
-        link: "#"
-      },
-      {
-        name: "TEST1",
-        description: "TEST 1 description",
-        link: "#"
-      },
-      {
-        name: "TEST2",
-        description: "TEST 2 description",
-        link: "#"
-      },
-      {
-        name: "TEST3",
-        description: "TEST 3 description",
-        link: "#"
-      },
-      {
-        name: "TEST4",
-        description: "TEST 4 description",
-        link: "#"
+        name: "Réchauffement climatique : des ...",
+        description: "40°C à Londres ou en Sibérie, 43°C dans le Sud-Ouest de la France, plus de 50°C en Inde… Des records de chaleur sont désormais battus chaque année à travers le monde. Ce que nous subissons aujourd’hui n’est pourtant qu’un aperçu de ce ...",
+        link: "https://reseauactionclimat.org/rechauffement-climatique-des-vagues-de-chaleur-plus-frequentes-et-plus-intenses/"
       },
     ];
   }
