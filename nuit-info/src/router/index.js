@@ -22,6 +22,11 @@ const routes = [
     name: 'puzzleGo',
     component: () => import(/* webpackChunkName: "puzzleGo" */ '../views/PuzzleGo.vue')
   },
+  {
+    path: '/escape-game/2',
+    name: 'snakeGo',
+    component: () => import(/* webpackChunkName: "puzzleGo" */ '../views/SnakeGo.vue')
+  },
 
   {
     path: '/escape-game/victory',
