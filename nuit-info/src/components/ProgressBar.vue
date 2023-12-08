@@ -1,11 +1,15 @@
 <template>
-    <div>
-      <img :src="images[currentIndex]" alt="Image" :style="{ height: '150', width: '400px', transform: 'rotate(90deg)' }">
+    <div class="progress-bar-container">
+        <div>
+        <img :src="images[currentIndex]" alt="Image" :style="{ height: '150', width: '400px', transform: 'rotate(90deg)' }">
 
+        </div>
     </div>
 </template>
 
 <script>
+
+import {getLevelCookie } from '@/base_functions'
 
 export default {
   name: 'HelloWorld',
@@ -32,7 +36,7 @@ export default {
   },
   computed: {
     currentIndex() {
-      return this.imageIndex % this.images.length;
+      return Number(getLevelCookie())-1
     }
   },
   methods: {
@@ -55,3 +59,22 @@ export default {
   }
 };
 </script>
+
+<style>
+label,input{
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.progress-bar-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 20px; /* Ajustez cela en fonction de vos besoins */
+  z-index: 999; /* Assurez-vous que la barre de progression est au-dessus du contenu principal */
+}
+</style>
