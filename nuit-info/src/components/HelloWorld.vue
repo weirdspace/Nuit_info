@@ -3,8 +3,13 @@
     <h1>{{ msg }}</h1>
 
     <div>
-    <img :src="currentImage" alt="Image" :style="{ height: '300px', width: '100pxpx', transform: 'rotate(90deg)' }" >
-    <button @click="changeImage">Changer d'image</button>
+      <img :src="images[currentIndex]" alt="Image" :style="{ height: '150', width: '400px', transform: 'rotate(90deg)' }">
+      <button @click="previousImage" :disabled="currentIndex === 0">Précédent</button>
+      <button @click="nextImage" :disabled="currentIndex === 10">Suivant</button>
+      <div>
+        <label for="imageIndex">Index de l'image :</label>
+        <input type="number" v-model="imageIndex" id="imageIndex" @input="updateImage">
+      </div>
     </div>
 
     <p>
@@ -61,18 +66,30 @@ export default {
         require("@/assets/9.jpg"),
         require("@/assets/10.jpg")
       ],  // Liste prédefinie d'images
-      currentIndex: 0 // Index actuel de l'image
+      imageIndex: 0 // Index actuel de l'image
     };
   },
   computed: {
-    currentImage() {
-      return this.images[this.currentIndex];
+    currentIndex() {
+      return this.imageIndex % this.images.length;
     }
   },
   methods: {
-    changeImage() {
-      // Incrémente l'index et revient à 0 si on atteint la fin de la liste
-      this.currentIndex = (this.currentIndex + 1) % this.images.length;
+    nextImage() {
+      // Incrémente l'index
+      if (this.currentIndex < 10) {
+        this.imageIndex++;
+      }
+    },
+    previousImage() {
+      // Décrémente l'index
+      if (this.currentIndex > 0) {
+        this.imageIndex--;
+      }
+    },
+    updateImage() {
+      // Met à jour l'index en fonction de la valeur entrée
+      this.imageIndex = parseInt(this.imageIndex, 10);
     }
   }
 };
