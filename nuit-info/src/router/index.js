@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import GameAndArticleView from '../views/GameAndArticleView.vue'
 
 const routes = [
   {
@@ -10,17 +11,18 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
-  
-  
-  {
+
+   {
     path: '/escape-game/1',
     name: 'puzzleGo',
     component: () => import(/* webpackChunkName: "puzzleGo" */ '../views/PuzzleGo.vue')
+  },
+  {
+    path: '/escape-game/2',
+    name: 'WordFinder',
+    component: GameAndArticleView // Utilisation de votre composant WordFinder pour cette route
   },
 
   {
