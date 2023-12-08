@@ -1,6 +1,12 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+
+    <div>
+    <img :src="currentImage" alt="Image" :style="{ height: '300px', width: '100pxpx', transform: 'rotate(90deg)' }" >
+    <button @click="changeImage">Changer d'image</button>
+    </div>
+
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -34,12 +40,42 @@
 </template>
 
 <script>
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      images: [
+        require("@/assets/0.jpg"),
+        require("@/assets/1.jpg"),
+        require("@/assets/2.jpg"),
+        require("@/assets/3.jpg"),
+        require("@/assets/4.jpg"),
+        require("@/assets/5.jpg"),
+        require("@/assets/6.jpg"),
+        require("@/assets/7.jpg"),
+        require("@/assets/8.jpg"),
+        require("@/assets/9.jpg"),
+        require("@/assets/10.jpg")
+      ],  // Liste prédefinie d'images
+      currentIndex: 0 // Index actuel de l'image
+    };
+  },
+  computed: {
+    currentImage() {
+      return this.images[this.currentIndex];
+    }
+  },
+  methods: {
+    changeImage() {
+      // Incrémente l'index et revient à 0 si on atteint la fin de la liste
+      this.currentIndex = (this.currentIndex + 1) % this.images.length;
+    }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
