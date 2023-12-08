@@ -13,16 +13,24 @@ const routes = [
     name: 'about',
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
-  {
+
+   {
     path: '/escape-game/1',
-    name: 'puzzle',
-    component: HomeView
+    name: 'puzzleGo',
+    component: () => import(/* webpackChunkName: "puzzleGo" */ '../views/PuzzleGo.vue')
   },
   {
     path: '/escape-game/2',
     name: 'WordFinder',
     component: GameAndArticleView // Utilisation de votre composant WordFinder pour cette route
   },
+
+  {
+    path: '/escape-game/victory',
+    name: 'victory',
+    component: () => import('@/views/VictoryView.vue')
+
+  }
 ]
 
 const router = createRouter({

@@ -1,11 +1,31 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/escape-game/2">Escape Game</router-link>
+
+  <nav class="d-flex justify-content-between">
+    <div>
+      <a :href="'/escape-game/' + bf.getPreviousLevel()" class="btn btn-primary"
+        v-if="bf.getCurrentLevel() > 1"
+      >Précédent</a>
+    </div>
+    <a href="/">Retour à l'accueil</a>
+    <div>
+      <a :href="'/escape-game/' + bf.getNextLevel()" class="btn btn-primary"
+        v-if="bf.getCurrentLevel() > 0 && bf.getCurrentLevel() < 10 && bf.getLevelCookie() > 0 && bf.getCurrentLevel() < bf.getLevelCookie()"
+      >Suivant</a>
+    </div>
+
   </nav>
   <router-view/>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      bf: require('@/base_functions')
+    }
+  }
+}
+</script>
 
 <style>
 #app {
