@@ -113,8 +113,8 @@ handleKeyDown(event) {
     if (this.targetIndex === this.targetWord.length) {
       alert('Félicitations ! Vous avez gagné ! Le mot était '+this.targetWord);
        
-            setLevelCookie(3);
-            window.location = '/escape-game/3';
+            setLevelCookie(4);
+            window.location = '/escape-game/4';
           
     }
    

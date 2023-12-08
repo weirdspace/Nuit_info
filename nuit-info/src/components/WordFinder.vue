@@ -28,6 +28,7 @@
   </template>
   
   <script>
+  import {setLevelCookie } from '@/base_functions'
   export default {
     data() {
       return {
@@ -62,6 +63,11 @@
         }
   
         this.wordFound = wordFound; // Met à jour la variable wordFound dans les données du composant
+        if(this.grid.length === this.foundWords.length){
+          alert("win.");
+          setLevelCookie(3);
+          window.location = '/escape-game/3';
+        }
       }
     }
   };
