@@ -31,6 +31,10 @@
       </div>
     </div>
 
+    <div v-else>
+      <button class="btn btn-primary" type="button" @click="goBackToMaxLevel()">Reprendre le jeu</button>
+    </div>
+
 
     <Rules msg="Voici les règles du jeu"/>
   </div>
@@ -39,6 +43,7 @@
 <script>
 // @ is an alias to /src
 import Rules from '@/components/Rules.vue'
+import { getLevelCookie } from '@/base_functions';
 
 export default {
   name: 'HomeView',
@@ -49,27 +54,36 @@ export default {
     saveSettings () {
       let form = new FormData(document.getElementById('accessibility'));
       this.setCookie('settings',JSON.stringify(Object.fromEntries(form)),30);
-      window.location='/';
+      window.location='/escape-game/1';
     },
+
     setCookie(cName, cValue, expDays) {
       let date = new Date();
       date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
       const expires = "expires=" + date.toUTCString();
       document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
     },
-    getCookie(name){
-    let pattern = RegExp(name + "=.[^;]*")
-      console.log(pattern);
-    let matched = document.cookie.match(pattern)
-      console.log(matched);
-    if(matched){
-      let cookie = matched[0].split('=')
-      return cookie[1]
-    }
-    return false
-  }
 
-}
+    getCookie(name){
+      let pattern = RegExp(name + "=.[^;]*")
+        console.log(pattern);
+      let matched = document.cookie.match(pattern)
+        console.log(matched);
+      if(matched){
+        let cookie = matched[0].split('=')
+        return cookie[1]
+      }
+      return false
+    },
+
+    goBackToMaxLevel() {
+      if (getLevelCookie() < 10 && getLevelCookie() > 0) {
+        window.location = '/escape-game/' + getLevelCookie();
+      } else if (getLevelCookie() < 10) {
+        window.location = '/';
+      }
+    }
+  }
 }
 </script>
 <style>
