@@ -9,7 +9,7 @@
 
 <script>
 
-import {getLevelCookie } from '@/base_functions'
+import { getLevelCookie } from '@/base_functions'
 
 export default {
   name: 'HelloWorld',
@@ -36,7 +36,12 @@ export default {
   },
   computed: {
     currentIndex() {
-      return Number(getLevelCookie())-1
+      let val = (Number(getLevelCookie())-1)*3+1;
+      if (val <= 0) {
+        val = 1;
+      }
+
+      return val;
     }
   },
   methods: {
@@ -67,14 +72,9 @@ label,input{
 }
 .progress-bar-container {
   position: fixed;
-  top: 0;
   right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 20px; /* Ajustez cela en fonction de vos besoins */
-  z-index: 999; /* Assurez-vous que la barre de progression est au-dessus du contenu principal */
+  bottom: 4rem;
+  padding: 20px;
+  z-index: 999;
 }
 </style>

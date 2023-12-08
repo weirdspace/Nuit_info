@@ -5,7 +5,7 @@
     <div class="card-body">
       <p class="card-text">Retrouvez tous les articles utilisés dans l'escape game.</p>
       
-      <div class="row row-cols-4 justify-content-center" style="row-gap: 1.5rem">
+      <div class="row row-cols-4" style="row-gap: 1.5rem">
         <div class="col" :key="level.name" v-for="level in this.levels">
           <div class="card">
             <div class="card-body text-start">
@@ -28,53 +28,18 @@ export default {
       levels: [
         {
           name: "Niveau 1",
-          description: "description",
+          description: "Puzzle ours blanc",
           link: "/escape-game/1"
         },
         {
           name: "Niveau 2",
-          description: "description",
+          description: "Trouvez les mots",
           link: "/escape-game/2"
         },
         {
           name: "Niveau 3",
-          description: "description",
+          description: "Snake écologique !",
           link: "/escape-game/3"
-        },
-        {
-          name: "Niveau 4",
-          description: "description",
-          link: "/escape-game/4"
-        },
-        {
-          name: "Niveau 5",
-          description: "description",
-          link: "/escape-game/5"
-        },
-        {
-          name: "Niveau 6",
-          description: "description",
-          link: "/escape-game/6"
-        },
-        {
-          name: "Niveau 7",
-          description: "description",
-          link: "/escape-game/7"
-        },
-        {
-          name: "Niveau 8",
-          description: "description",
-          link: "/escape-game/8"
-        },
-        {
-          name: "Niveau 9",
-          description: "description",
-          link: "/escape-game/9"
-        },
-        {
-          name: "Niveau 10",
-          description: "description",
-          link: "/escape-game/10"
         },
       ]
     }

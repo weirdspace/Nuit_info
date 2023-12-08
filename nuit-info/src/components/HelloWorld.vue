@@ -71,7 +71,7 @@ export default {
   },
   computed: {
     currentIndex() {
-      return this.imageIndex % this.images.length;
+      return (Number(getLevelCookie())-1)*3+1
     }
   },
   methods: {

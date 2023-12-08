@@ -17,9 +17,9 @@ export default {
         VictoryBackToGame
     },
     beforeMount() {
-      if (getLevelCookie() < 10 && getLevelCookie() > 0) {
+      if (getLevelCookie() < 4 && getLevelCookie() > 0) {
         window.location = '/escape-game/' + getLevelCookie();
-      } else if (getLevelCookie() < 10) {
+      } else if (getLevelCookie() < 4) {
         window.location = '/';
       }
     }

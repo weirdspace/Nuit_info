@@ -83,11 +83,16 @@ export default {
     },
 
     goBackToMaxLevel() {
-      if (getLevelCookie() < 10 && getLevelCookie() > 0) {
+      if (getLevelCookie() < 4 && getLevelCookie() > 0) {
         window.location = '/escape-game/' + getLevelCookie();
-      } else if (getLevelCookie() < 10) {
+      } else if (getLevelCookie() < 4) {
         window.location = '/';
       }
+    }
+  },
+  beforeMount() {
+    if (getLevelCookie() >= 4) {
+      window.location = "/escape-game/victory";
     }
   }
 }
@@ -99,13 +104,8 @@ label,input{
 }
 .progress-bar-container {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  bottom: 4rem;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
   padding: 20px; /* Ajustez cela en fonction de vos besoins */
   z-index: 999; /* Assurez-vous que la barre de progression est au-dessus du contenu principal */
 }

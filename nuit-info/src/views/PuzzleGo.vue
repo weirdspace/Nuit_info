@@ -12,17 +12,12 @@
     </div>
   </div>
   <button @click="solvePuzzle" class="solve-button">Résoudre le Puzzle</button>
-  <ProgressBar msg="Progress bar"/>
 </template>
 
 <script>
 import {setLevelCookie } from '@/base_functions'
-import ProgressBar from '@/components/ProgressBar.vue'
 
 export default {
-  components: {
-    ProgressBar
-  },
   data() {
     return {
       gridSize: 3, // 4x4 grid

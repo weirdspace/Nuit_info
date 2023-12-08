@@ -1,20 +1,27 @@
 <template>
     <div class="home">
-      <img alt="Vue Article-Jeu" src="../assets/mini-game.jpg">
-      <MiniGame v-if="getLevel() == 1" msg="Article et mini-Jeu"/>
+      <PuzzleGo v-if="getLevel() == 1"/>
       <WordFinder v-if="getLevel() == 2" msg="Article et mini-Jeu"/>
+      <SnakeGo v-if="getLevel() == 3"/>
+
+      <ProgressBar msg="Progress bar"/>
     </div>
   </template>
   
   <script>
   // @ is an alias to /src
-  import MiniGame from '@/components/MiniGame.vue'
+  import PuzzleGo from '@/views/PuzzleGo.vue'
   import WordFinder from '@/components/WordFinder.vue'
+  import SnakeGo from '@/views/SnakeGo.vue'
+  import ProgressBar from '@/components/ProgressBar.vue';
   
   export default {
     components: {
-      MiniGame,
-      WordFinder
+      PuzzleGo,
+      WordFinder,
+      SnakeGo,
+
+      ProgressBar
       //Article
     },
     methods: {

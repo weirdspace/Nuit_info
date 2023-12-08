@@ -5,12 +5,12 @@
   <!-- Affiche la lettre si c'est une cellule de lettre -->
   <span v-if="isLetterCell(index)">{{ currentLetter }}</span>
 </div>
-
   </div>
 </template>
 
 <script>
-import {setLevelCookie } from '@/base_functions'
+import { setLevelCookie } from '@/base_functions'
+
 export default {
   data() {
     return {
@@ -114,7 +114,7 @@ handleKeyDown(event) {
       alert('Félicitations ! Vous avez gagné ! Le mot était '+this.targetWord);
        
             setLevelCookie(4);
-            window.location = '/escape-game/4';
+            window.location = '/escape-game/victory';
           
     }
    
@@ -152,7 +152,6 @@ beforeUnmount() {
   margin: 0 auto;
   border: 1px solid #ddd;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  transform: scale(1.35);
 }
 
 .cell {

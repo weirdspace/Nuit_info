@@ -17,7 +17,7 @@ const routes = [
    {
     path: '/escape-game/1',
     name: 'puzzleGo',
-    component: () => import(/* webpackChunkName: "puzzleGo" */ '../views/PuzzleGo.vue')
+    component: GameAndArticleView
   },
   {
     path: '/escape-game/2',
@@ -29,7 +29,7 @@ const routes = [
   {
     path: '/escape-game/3',
     name: 'snakeGo',
-    component: () => import(/* webpackChunkName: "snakeGo" */ '../views/SnakeGo.vue')
+    component: GameAndArticleView
   },
   {
     path: '/escape-game/victory',
