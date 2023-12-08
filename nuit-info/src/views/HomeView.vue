@@ -54,6 +54,7 @@ export default {
     saveSettings () {
       let form = new FormData(document.getElementById('accessibility'));
       this.setCookie('settings',JSON.stringify(Object.fromEntries(form)),30);
+      this.setCookie("max_level", 1, 30);
       window.location='/escape-game/1';
     },
 
