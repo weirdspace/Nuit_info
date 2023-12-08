@@ -28,7 +28,7 @@ export default {
       levels: [
         {
           name: "Niveau 1",
-          description: "Puzzle ours blanc",
+          description: "Puzzle ours polaire",
           link: "/escape-game/1"
         },
         {
