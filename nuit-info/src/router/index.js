@@ -21,10 +21,16 @@ const routes = [
   },
   {
     path: '/escape-game/2',
+
     name: 'WordFinder',
     component: GameAndArticleView // Utilisation de votre composant WordFinder pour cette route
-  },
 
+  },
+  {
+    path: '/escape-game/3',
+    name: 'snakeGo',
+    component: () => import(/* webpackChunkName: "snakeGo" */ '../views/SnakeGo.vue')
+  },
   {
     path: '/escape-game/victory',
     name: 'victory',
