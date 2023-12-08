@@ -37,18 +37,23 @@
 
 
     <Rules msg="Voici les règles du jeu"/>
+    <div class="progress-bar-container">
+      <ProgressBar msg="Progress bar"/>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Rules from '@/components/Rules.vue'
+import ProgressBar from '@/components/ProgressBar.vue'
 import { getLevelCookie } from '@/base_functions';
 
 export default {
   name: 'HomeView',
   components: {
-    Rules
+    Rules,
+    ProgressBar
   },
   methods: {
     saveSettings () {
@@ -91,5 +96,17 @@ export default {
 label,input{
   padding-left: 5px;
   padding-right: 5px;
+}
+.progress-bar-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 20px; /* Ajustez cela en fonction de vos besoins */
+  z-index: 999; /* Assurez-vous que la barre de progression est au-dessus du contenu principal */
 }
 </style>
