@@ -1,4 +1,5 @@
 <template>
+
   <nav class="d-flex justify-content-between">
     <div>
       <a :href="'/escape-game/' + bf.getPreviousLevel()" class="btn btn-primary"
@@ -11,6 +12,7 @@
         v-if="bf.getCurrentLevel() > 0 && bf.getCurrentLevel() < 10 && bf.getLevelCookie() > 0 && bf.getCurrentLevel() < bf.getLevelCookie()"
       >Suivant</a>
     </div>
+
   </nav>
   <router-view/>
 </template>
