@@ -1,48 +1,80 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <form id="accessibility">
-      <h2>Paramètres d'Accessibilité</h2>
-      <div>
-        <label for="fontSize">Malvoyant:</label>
-        <label><input type="radio" name="fontSize" value="True">Oui</label>
-        <label><input type="radio" name="fontSize" value="False">Non</label>
+  <div class="container-md">
+    <div v-if="!getCookie('settings')" class="card">
+      <div class="card-header">
+        <h5>Paramètres d'Accessibilité</h5>
       </div>
-      <div>
-        <label for="colorScheme">Dislexique</label>
-        <label><input type="radio" name="colorScheme" value="True">Oui</label>
-        <label><input type="radio" name="colorScheme" value="False">Non</label>
+      <div class="card-body">
+        <form class="card-text" id="accessibility">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <label for="fontSize">Malvoyant:</label>
+                <label><input type="radio" name="fontSize" value="True"> Oui</label>
+                <label><input type="radio" name="fontSize" value="False"> Non</label>
+              </div>
+              <div class="col">
+                <label for="colorScheme">Dislexique</label>
+                <label><input type="radio" name="colorScheme" value="True"> Oui</label>
+                <label><input type="radio" name="colorScheme" value="False"> Non</label>
+              </div>
+              <div class="col">
+                <input class="form-check-input" type="checkbox" id="audioDescriptions" name="audioDescriptions">
+                <label class="form-check-label" for="audioDescriptions"> Audio-description</label>
+              </div>
+            </div>
+          </div>
+          <p>Nous utilisons des cookies pour améliorer votre expérience sur notre site. En continuant, vous acceptez notre utilisation des cookies.</p>
+          <button class="btn btn-primary" type="button" @click="saveSettings()">Continuer et jouer</button>
+        </form>
+
       </div>
+    </div>
 
-      <label for="audioDescriptions"><input type="checkbox" id="audioDescriptions" name="audioDescriptions">Audio-description</label>
 
-      <p>Nous utilisons des cookies pour améliorer votre expérience sur notre site. En continuant, vous acceptez notre utilisation des cookies.</p>
-      <button type="button" @click="saveSettings()">Continuer</button>
-    </form>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Rules msg="Voici les règles du jeu"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Rules from '@/components/Rules.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
+    Rules
   },
   methods: {
     saveSettings () {
       let form = new FormData(document.getElementById('accessibility'));
       this.setCookie('settings',JSON.stringify(Object.fromEntries(form)),30);
+      window.location='/';
     },
     setCookie(cName, cValue, expDays) {
       let date = new Date();
       date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
       const expires = "expires=" + date.toUTCString();
       document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
+    },
+    getCookie(name){
+    let pattern = RegExp(name + "=.[^;]*")
+      console.log(pattern);
+    let matched = document.cookie.match(pattern)
+      console.log(matched);
+    if(matched){
+      let cookie = matched[0].split('=')
+      return cookie[1]
     }
+    return false
+  }
+
 }
 }
 </script>
+<style>
+label,input{
+  padding-left: 5px;
+  padding-right: 5px;
+}
+</style>
