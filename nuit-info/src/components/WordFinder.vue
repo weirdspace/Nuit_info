@@ -66,7 +66,7 @@
         if(this.grid.length === this.foundWords.length){
           alert("win.");
           setLevelCookie(3);
-          window.location = '/escape-game/3';
+          window.location = '?escape-game=3';
         }
       }
     }

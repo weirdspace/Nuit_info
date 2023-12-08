@@ -114,7 +114,7 @@ handleKeyDown(event) {
       alert('Félicitations ! Vous avez gagné ! Le mot était '+this.targetWord);
        
             setLevelCookie(4);
-            window.location = '/escape-game/victory';
+            window.location = '?escape-game=victory';
           
     }
    

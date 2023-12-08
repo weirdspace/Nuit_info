@@ -8,31 +8,26 @@ const routes = [
     name: 'home',
     component: HomeView
   },
-  {
-    path: '/about',
-    name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  },
 
    {
-    path: '/escape-game/1',
+    path: '/?escape-game=1',
     name: 'puzzleGo',
     component: GameAndArticleView
   },
   {
-    path: '/escape-game/2',
+    path: '/?escape-game=2',
 
     name: 'WordFinder',
     component: GameAndArticleView // Utilisation de votre composant WordFinder pour cette route
 
   },
   {
-    path: '/escape-game/3',
+    path: '/?escape-game=3',
     name: 'snakeGo',
     component: GameAndArticleView
   },
   {
-    path: '/escape-game/victory',
+    path: '/?escape-game=victory',
     name: 'victory',
     component: () => import('@/views/VictoryView.vue')
 

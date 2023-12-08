@@ -18,7 +18,7 @@ export default {
     },
     beforeMount() {
       if (getLevelCookie() < 4 && getLevelCookie() > 0) {
-        window.location = '/escape-game/' + getLevelCookie();
+        window.location = '?escape-game=' + getLevelCookie();
       } else if (getLevelCookie() < 4) {
         window.location = '/';
       }

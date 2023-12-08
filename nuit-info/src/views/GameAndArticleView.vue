@@ -26,8 +26,9 @@
     },
     methods: {
     getLevel() { 
-    if (window.location.pathname.startsWith("/escape-game/") && !window.location.pathname.endsWith("victory")) {
-        return Number(window.location.pathname.split('/')[2]);
+    if (window.location.search.startsWith("?escape-game") && !window.location.search.endsWith("victory")) {
+      console.log(window.location.search.split('='));
+        return Number(window.location.search.split('=')[1]);
     } else {
         return 0;
     }

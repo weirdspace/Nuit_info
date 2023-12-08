@@ -1,5 +1,11 @@
 <template>
-  <div class="container-md">
+  <div v-if="isGame()">
+    <GameAndArticleView/>
+  </div>
+  <div v-if="isVictory()">
+    <VictoryView/>
+  </div>
+  <div v-if="!isGame() && !isVictory()" class="container-md">
     <div v-if="!getCookie('settings')" class="card">
       <div class="card-header">
         <h5>Paramètres d'Accessibilité</h5>
@@ -47,20 +53,24 @@
 // @ is an alias to /src
 import Rules from '@/components/Rules.vue'
 import ProgressBar from '@/components/ProgressBar.vue'
+import GameAndArticleView from './GameAndArticleView.vue';
+import VictoryView from './VictoryView.vue';
 import { getLevelCookie } from '@/base_functions';
 
 export default {
   name: 'HomeView',
   components: {
     Rules,
-    ProgressBar
+    ProgressBar,
+    GameAndArticleView,
+    VictoryView
   },
   methods: {
     saveSettings () {
       let form = new FormData(document.getElementById('accessibility'));
       this.setCookie('settings',JSON.stringify(Object.fromEntries(form)),30);
       this.setCookie("max_level", 1, 30);
-      window.location='/escape-game/1';
+      window.location='?escape-game=1';
     },
 
     setCookie(cName, cValue, expDays) {
@@ -84,17 +94,27 @@ export default {
 
     goBackToMaxLevel() {
       if (getLevelCookie() < 4 && getLevelCookie() > 0) {
-        window.location = '/escape-game/' + getLevelCookie();
+        window.location = '?escape-game=' + getLevelCookie();
       } else if (getLevelCookie() < 4) {
         window.location = '/';
+      } else {
+        window.location = "?escape-game=victory";
       }
+    },
+
+    isGame() {
+      return window.location.search.startsWith('?escape-game') && !window.location.search.endsWith('victory');
+    },
+
+    isVictory() {
+      return window.location.search.startsWith('?escape-game=victory');
     }
   },
-  beforeMount() {
-    if (getLevelCookie() >= 4) {
-      window.location = "/escape-game/victory";
-    }
-  }
+  // beforeMount() {
+  //   if (getLevelCookie() >= 4 && !window.location.search.startsWith('?escape-game=victory')) {
+  //     window.location = "?escape-game=victory";
+  //   }
+  // },
 }
 </script>
 <style>

@@ -2,23 +2,28 @@
 
   <nav class="d-flex justify-content-between">
     <div>
-      <a :href="'/escape-game/' + bf.getPreviousLevel()" class="btn btn-primary"
+      <a :href="'?escape-game=' + bf.getPreviousLevel()" class="btn btn-primary"
         v-if="bf.getCurrentLevel() > 1"
       >Précédent</a>
     </div>
     <a href="/">Retour à l'accueil</a>
     <div>
-      <a :href="'/escape-game/' + bf.getNextLevel()" class="btn btn-primary"
+      <a :href="'?escape-game=' + bf.getNextLevel()" class="btn btn-primary"
         v-if="bf.getCurrentLevel() > 0 && bf.getCurrentLevel() < 10 && bf.getLevelCookie() > 0 && bf.getCurrentLevel() < bf.getLevelCookie()"
       >Suivant</a>
     </div>
 
   </nav>
-  <router-view/>
+  <HomeView />
 </template>
 
 <script>
+import HomeView from './views/HomeView.vue';
+
 export default {
+  components: {
+    HomeView,
+  },
   data() {
     return {
       bf: require('@/base_functions')

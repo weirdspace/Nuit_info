@@ -45,7 +45,7 @@ export default {
   
   this.waitBeforeRedirect().then(() => {
             setLevelCookie(2);
-            window.location = '/escape-game/2';
+            window.location = '?escape-game=2';
           });
   // win
 },
@@ -74,7 +74,7 @@ export default {
           // win
           this.waitBeforeRedirect().then(() => {
             setLevelCookie(2);
-            window.location = '/escape-game/2';
+            window.location = '?escape-game=2';
           });
         }
       }

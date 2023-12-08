@@ -7,8 +7,8 @@ let localGetLevelCookie = () => {
 };
 
 let localGetCurrentLevel = () => {
-    if (window.location.pathname.startsWith("/escape-game/") && !window.location.pathname.endsWith("victory")) {
-        return Number(window.location.pathname.split('/')[2]);
+    if (window.location.search.startsWith("?escape-game=") && !window.location.search.endsWith("victory")) {
+        return Number(window.location.pathname.split('=')[1]);
     } else {
         return 0;
     }

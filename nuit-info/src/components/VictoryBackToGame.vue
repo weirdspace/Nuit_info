@@ -29,17 +29,17 @@ export default {
         {
           name: "Niveau 1",
           description: "Puzzle ours polaire",
-          link: "/escape-game/1"
+          link: "?escape-game=1"
         },
         {
           name: "Niveau 2",
           description: "Trouvez les mots",
-          link: "/escape-game/2"
+          link: "?escape-game=2"
         },
         {
           name: "Niveau 3",
           description: "Snake écologique !",
-          link: "/escape-game/3"
+          link: "?escape-game=3"
         },
       ]
     }
